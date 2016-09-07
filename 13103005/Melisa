@@ -1,0 +1,34 @@
+#include<stgio.h>
+#include<fcntl.h>
+#include<unistd.h>
+{
+int i, fd, vector[10], escribe, lee;
+fd= creat("Talle",0600);
+for (i=0;i<10;i++) vector[i];
+write(fd,vector,sizeof(vector));
+close(fd);
+fd= open("Taller",O_RDONLY);
+while ((lee= read(fd,&escribe,sizeof(int)))>0)
+{ printf(“Leido el número %d\n”,escribe); }
+close(fd);
+exit(0);
+}
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<fcntl.h>
+#include<unistd.h>
+int main()
+{
+int i, f;
+
+FILE *fd = fopen("Taller.txt","w");
+//fd=creat("taller", 0600);
+
+for(i=0;i<10;i++){
+//write(f,&i,sizeof(i));
+fprintf(fd, "imprimiendo %d\n",i);
+//printf("printing %d\n",i);
+}
+return 0;
+}
